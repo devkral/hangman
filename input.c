@@ -177,7 +177,22 @@ int is_in_check (unsigned char *ein, unsigned char c_in)
 	return found;
 }
 
+int is_in_check2 (unsigned char *ein, unsigned char c_in)
+{
+	int found=0;
+	int count=0;
+	int length=getlength(ein);
 
+	while (count<length)
+	{
+		if (ein[count]==c_in)
+		{
+			found=1;
+		}
+		count++;
+	}
+	return found;
+}
 
 int fillchar(unsigned char **ein, int length, unsigned char c)
 {
