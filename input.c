@@ -94,7 +94,11 @@ void eingabe2 (unsigned char **ein)
 	unsigned int length=0;
 	
 	printf("Enter secret word: ");
+#ifdef _WIN32
+	system("@echo off");
+#else
 	system("stty -echo > /dev/tty");
+#endif
 	allocate(ein,&length);
 	c=getchar();
 	while (c!='\n')
@@ -104,7 +108,12 @@ void eingabe2 (unsigned char **ein)
 		allocate(ein, &length); 
 		c=getchar();
 	} 
+#ifdef _WIN32
+	system("@echo on");
+#else
 	system("stty echo > /dev/tty");
+#endif
+	
 }
 
 
