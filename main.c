@@ -48,6 +48,7 @@ int main()
 			break;
 	}
 
+	printf("Das Wort war: %s\n",eingabe_henker);
 	if(tries>=1)
 		printf("Die Spieler haben gewonnen\n");
 	else
