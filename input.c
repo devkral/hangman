@@ -92,7 +92,7 @@ void eingabe2 (unsigned char **ein)
 {
 	unsigned char c=0; 
 	unsigned int length=0;
-	
+	int valid=1;
 	printf("Enter secret word: ");
 #ifdef _WIN32
 	system("@echo off");
@@ -101,19 +101,26 @@ void eingabe2 (unsigned char **ein)
 #endif
 	allocate(ein,&length);
 	c=getchar();
+	
+#ifdef _WIN32
+	system("@echo on");
+#else
+	system("stty echo > /dev/tty");
+#endif
 	while (c!='\n')
 	{
 
 		(*ein)[length-1]=(char)c;
 		allocate(ein, &length); 
 		c=getchar();
+		if (isalpha(c)==0 && c!='\n')
+			valid=0;
 	} 
-#ifdef _WIN32
-	system("@echo on");
-#else
-	system("stty echo > /dev/tty");
-#endif
-	
+	if (valid==0)
+	{
+		printf("\n Wort ungültig\n");
+		eingabe2(ein);
+	}
 }
 
 
