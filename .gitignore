@@ -11,6 +11,7 @@
 
 Makefile
 # not needed delete it!
+Makefile.in
 Makefile.in*
 # needed keep it
 !Makefile.am
