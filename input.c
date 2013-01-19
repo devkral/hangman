@@ -95,7 +95,6 @@ void eingabe2 (unsigned char **ein)
 	int valid=1;
 	printf("Enter secret word: ");
 #ifdef _WIN32
-	system("@echo off");
 #else
 	system("stty -echo > /dev/tty");
 #endif
@@ -103,7 +102,7 @@ void eingabe2 (unsigned char **ein)
 	c=getchar();
 	
 #ifdef _WIN32
-	system("@echo on");
+	system("cls");
 #else
 	system("stty echo > /dev/tty");
 #endif
