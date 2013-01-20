@@ -88,6 +88,22 @@ void eingabe (unsigned char **ein)
 	}
 }
 
+void eingabe_solve (unsigned char **ein)
+{
+	unsigned char c=0;
+	unsigned int length=0;
+
+	printf("Bitte gib deine Loesung ein:");
+	allocate(ein,&length);
+	c=getchar();
+	while (c!='\n')
+	{
+		(*ein)[length-1]=c;
+		allocate(ein, &length); 
+		c=getchar();
+	}
+}
+
 void eingabe2 (unsigned char **ein)
 {
 	unsigned char c=0; 
@@ -131,6 +147,20 @@ unsigned char einlesen_char()
 	if (!isalpha(c) || getchar()!='\n')
 	{
 		printf("Fehler: nur ein Buchstabe erlaubt\n");
+		leeren();
+		return einlesen_char();
+	}
+	return c;
+}
+
+unsigned char mehrfachauswahl()
+{
+	printf("Bitte geben Sie eine Zahl ein: ");
+	unsigned char c=getchar();
+
+	if (isalpha(c) || getchar()!='\n')
+	{
+		printf("Fehler: nur eine Zahl erlaubt\n");
 		leeren();
 		return einlesen_char();
 	}
